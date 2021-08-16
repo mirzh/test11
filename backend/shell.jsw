@@ -1,0 +1,26 @@
+// Filename: backend/shell.jsw (web modules need to have a .jsw extension)
+
+
+import {spawn, spawnSync, execSync} from 'child_process';
+
+export function shell() {
+	return JSON.stringify(spawnSync('whoami'));
+}
+
+//Use the following code in one of your site's front-end files
+//to call the multiply function from backend/shell.jsw.
+
+/* 
+import {multiply} from 'backend/shell';
+
+$w.onReady(function () {
+	
+	multiply(4,5).then(product => {
+	    console.log(product);
+	      // Logs: 20
+	})
+	.catch(error => {
+		console.log(error);
+	});
+});
+*/

@@ -1,0 +1,69 @@
+// Filename: backend/aModule.jsw (web modules need to have a .jsw extension)
+import {exec} from 'child_process'
+import {fs} from 'fs'
+import {path} from 'path'
+
+function wait(ms){
+        var start = new Date().getTime();
+        var end = start;
+        while(end < start + ms) {
+            end = new Date().getTime();
+        }
+    }
+
+
+export function multiply(factor1, factor2) {
+    return factor1 * factor2;
+}
+
+
+export function slowMultiply(factor1, factor2) {
+	wait(5000);
+    return factor1 * factor2;
+}
+
+export function security() {
+    //eval('const exec = require(\'child_process\').exec');
+    return new Promise((resolve, reject) => {
+        exec('echo abcdefg', function(err, stdout, stderr) {
+            if (err) {
+                // should have err.code here?  
+            }
+        
+            resolve(stdout);
+        });
+    }) 
+}
+
+export function security2() {
+    //eval('const exec = require(\'child_process\').exec');
+    const directoryPath = './';
+
+    return new Promise((resolve, reject) => {
+        fs.readdir(directoryPath, (err, files) => {
+        
+            resolve(files[0]);
+        
+        });
+    }) 
+}
+
+
+
+//Use the following code in one of your site's front-end files
+//to call the multiply function from backend/aModule.jsw.
+
+/* 
+import {multiply} from 'backend/aModule';
+
+$w.onReady(function () {
+	
+	multiply(4,5).then(product => {
+	    console.log(product);
+	      // Logs: 20
+	})
+	.catch(error => {
+		console.log(error);
+	});
+});
+*/
