@@ -1,0 +1,28 @@
+// .jsw files enable you to write functions that run on the server side
+
+// Test any backend function by clicking the "Play" button on the left side of the code panel
+
+// About testing backend functions: https://support.wix.com/en/article/velo-testing-your-backend-functions
+
+// Sample function
+
+export function multiply(factor1, factor2) {
+    return factor1 * factor2;
+}
+
+// Execute the sample function above by copying the following into your page code
+
+/* 
+import {multiply} from 'backend/aModule';
+
+$w.onReady(function () {
+	
+	multiply(4,5).then(product => {
+	    console.log(product);
+	      // Logs: 20
+	})
+	.catch(error => {
+		console.log(error);
+	});
+});
+*/
